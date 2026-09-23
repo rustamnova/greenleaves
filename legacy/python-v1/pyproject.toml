@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "green-ai-mvp"
+version = "0.1.0"
+description = "Local DXF pipeline for explainable urban planting proposals"
+requires-python = ">=3.11"
+dependencies = ["ezdxf>=1.3", "numpy>=1.26", "PyYAML>=6.0"]
+
+[project.scripts]
+green-ai = "green_ai.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
