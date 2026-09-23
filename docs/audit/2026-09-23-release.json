@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-09-23T15:44:41.4516500Z",
+  "site": "https://rustamnova.github.io/greenleaves/",
+  "site_commit": "e31ed26bc6647c4e77564f3b74a22c4f393e43af",
+  "source_commit": "7f8679a",
+  "engine_matches_source": true,
+  "http_checks": [
+    {
+      "path": "",
+      "status": 200,
+      "bytes": 7731
+    },
+    {
+      "path": "docs.html",
+      "status": 200,
+      "bytes": 8686
+    },
+    {
+      "path": "studio/",
+      "status": 200,
+      "bytes": 10506
+    },
+    {
+      "path": "studio/engine.js",
+      "status": 200,
+      "bytes": 20012
+    },
+    {
+      "path": "studio/app.js",
+      "status": 200,
+      "bytes": 17674
+    },
+    {
+      "path": "data/species-catalog.json",
+      "status": 200,
+      "bytes": 355585
+    }
+  ]
+}
