@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-09-24T10:55:09.305Z",
+  "baseUrl": "https://greenleaves-lct2026.netlify.app/",
+  "anonymous": true,
+  "allMatched": false,
+  "files": [
+    {
+      "path": "data/species-catalog.json",
+      "url": "https://greenleaves-lct2026.netlify.app/data/species-catalog.json",
+      "matches": false,
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "path": "docs.html",
+      "url": "https://greenleaves-lct2026.netlify.app/docs.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 9196,
+      "sha256": "7cecd72b9af1f2fa54ccf0d6c50e3650d49f48281e74867a911549f6c74a320d",
+      "matches": false
+    },
+    {
+      "path": "icon.svg",
+      "url": "https://greenleaves-lct2026.netlify.app/icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 251,
+      "sha256": "4835bcf283e14ef675f4cbc6376cb4eea94a26c889143e807938ff9954c0ec15",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "url": "https://greenleaves-lct2026.netlify.app/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 8233,
+      "sha256": "26417e279f0e68a8fe7cfa532204b5b40f2c88cf209dc0c266e6484fc8f34a04",
+      "matches": false
+    },
+    {
+      "path": "landing.js",
+      "url": "https://greenleaves-lct2026.netlify.app/landing.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=UTF-8",
+      "bytes": 1672,
+      "sha256": "49cad4ddab1414a93aa98a0c5d3b5309e215f5c32fa6fabc5f5539499e0065bb",
+      "matches": true
+    },
+    {
+      "path": "studio/app.js",
+      "url": "https://greenleaves-lct2026.netlify.app/studio/app.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=UTF-8",
+      "bytes": 17674,
+      "sha256": "23a0ce0bc625b77c0fc64e193a06754ee1c96c6a884dca2bc8f8b9521634752b",
+      "matches": true
+    },
+    {
+      "path": "studio/engine.js",
+      "url": "https://greenleaves-lct2026.netlify.app/studio/engine.js",
+      "matches": false,
+      "error": "fetch failed"
+    },
+    {
+      "path": "studio/index.html",
+      "url": "https://greenleaves-lct2026.netlify.app/studio/index.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 11002,
+      "sha256": "2a2292f50c5bc244df08fe1abe62437066b1b391b1ff6e6ff85c2bc7c0b92b9e",
+      "matches": false
+    },
+    {
+      "path": "studio/studio.css",
+      "url": "https://greenleaves-lct2026.netlify.app/studio/studio.css",
+      "status": 200,
+      "contentType": "text/css; charset=UTF-8",
+      "bytes": 10844,
+      "sha256": "13fbf7969e06010cf1ee5830ac568bd597fb635906205339cd4b1d57fbbb0ac4",
+      "matches": true
+    },
+    {
+      "path": "style.css",
+      "url": "https://greenleaves-lct2026.netlify.app/style.css",
+      "status": 200,
+      "contentType": "text/css; charset=UTF-8",
+      "bytes": 9125,
+      "sha256": "27353ad98e2cdf3a8fa6a33380cea4c22fff09b9aa2fa1d37f44865c65054ef4",
+      "matches": true
+    }
+  ]
+}

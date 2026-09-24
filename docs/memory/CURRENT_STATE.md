@@ -1,4 +1,6 @@
-# Current state — 2026-09-23
+# Current state — 2026-09-24
+
+Добавлено отдельное публичное зеркало Netlify: https://greenleaves-lct2026.netlify.app/ (демо: `/studio/?demo=1`). Релиз `6ab5008197c1a496dadd1d5f`, источник `ed68437`; анонимный доступ и браузерный расчёт проверены. SourceCraft и GitVerse пока не опубликованы: пакеты готовы, требуется вход владельца в открытые страницы авторизации. Proxytester не изменялся. См. `docs/HOSTING.md` и `docs/audit/2026-09-24-hosting.md`.
 
 Опубликованы сайт https://rustamnova.github.io/greenleaves/ и DXF-студия https://rustamnova.github.io/greenleaves/studio/?demo=1. Работают три сценария, слойная классификация, проверка контура/единиц/препятствий, ручные и текстовые правки, отмена, DXF/CSV/JSON. CLI использует то же ядро. Источник релиза: `7f8679a`; ветка gh-pages: `e31ed26bc6647c4e77564f3b74a22c4f393e43af`. GitHub Pages сообщил built, HTTPS включён. Проверка HTTP и соответствия опубликованного ядра: `docs/audit/2026-09-23-release.json`.
 

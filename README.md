@@ -4,6 +4,8 @@
 
 [Сайт](https://rustamnova.github.io/greenleaves/) · [DXF-студия](https://rustamnova.github.io/greenleaves/studio/?demo=1) · [Методика](https://rustamnova.github.io/greenleaves/docs.html) · [План до сдачи](docs/ROADMAP.md)
 
+Публичное зеркало: [Netlify](https://greenleaves-lct2026.netlify.app/) · [Демо на Netlify](https://greenleaves-lct2026.netlify.app/studio/?demo=1). [Статус хостингов и ручной выпуск](docs/HOSTING.md).
+
 **Статус:** инженерный прототип v0.2. Нормативная матрица и проверка на полном реальном датасете не завершены. Версия не готова к финальной сдаче и не выдаёт утверждённые проекты посадки.
 
 ## Возможности
