@@ -6,13 +6,15 @@ if ([DateTimeOffset]::UtcNow -ge $stopCode) { throw 'Stop-code reached. Do not u
 $repoRoot = Split-Path $PSScriptRoot -Parent
 Push-Location $repoRoot
 try {
-    $dirty = git status --porcelain
-    if ($dirty) { throw 'Commit and review all project changes before deploying.' }
+    # Only the committed site subtree is published; private/unrelated files stay local.
+    git diff --exit-code HEAD -- site
+    if ($LASTEXITCODE -ne 0) { throw 'Review and commit website changes before publishing.' }
     node --test tests/engine.test.mjs tests/cli.test.mjs
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
     $pagesCommit = git subtree split --prefix site HEAD
     if ($LASTEXITCODE -ne 0) { throw 'Site subtree export failed.' }
     # Retain published history. No force-push and no automatic deployment.
+    if ([DateTimeOffset]::UtcNow -ge $stopCode) { throw 'Stop-code reached. Publication is frozen.' }
     git push origin "${pagesCommit}:refs/heads/gh-pages"
     if ($LASTEXITCODE -ne 0) { throw 'Pages push failed.' }
     Write-Output "Published site commit: $pagesCommit"

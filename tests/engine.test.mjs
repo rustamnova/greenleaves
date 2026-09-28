@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {demoDxf,parseDxf,prepare,generate,validatePoint,exportDxf,makeReport,pointInPolygon,distSegment} from '../site/studio/engine.js';
+import {demoDxf,parseDxf,prepare,generate,validatePoint,exportDxf,makeReport,pointInPolygon,distSegment,classify} from '../site/studio/engine.js';
 const model=()=>parseDxf(demoDxf(),'demo.dxf');
 const ctx=()=>prepare(model());
 const insert=(text,entity)=>text.replace('0\nENDSEC\n0\nEOF',entity+'0\nENDSEC\n0\nEOF');
@@ -72,4 +72,31 @@ test('export rejects manually injected invalid placements',()=>{
 test('report carries assumptions, roles, units and edits without certified claims',()=>{
  const c=ctx(),r=generate(c);const report=makeReport(c,r,[{action:'remove',id:'GL-0001'}]);
  assert.equal(report.status,'engineering_preview');assert.equal(report.units_per_meter,1);assert.equal(report.edits.length,1);assert.ok(report.limitations.length>=4);assert.equal(report.summary.accepted,r.accepted.length);
+});
+
+test('spatial hierarchy agrees with exhaustive checks including exact nearest distance',()=>{
+ const m=model();
+ let seed=91;const random=()=>((seed=(1664525*seed+1013904223)>>>0)/2**32);
+ for(let i=0;i<800;i++){
+  const x=random()*150-15,y=random()*110-15;
+  m.features.push({type:'LINE',layer:i%3?'ВОДОПРОВОД':'UNCLASSIFIED',closed:false,points:[{x,y},{x:x+random()*6,y:y+random()*5}]});
+ }
+ const indexed=prepare(m,{geometryTolerance:0.03});
+ const exhaustive={...indexed,index:{box:indexed.index.box,entries:indexed.obstacles.map(f=>({f}))}};
+ for(let i=0;i<2000;i++){
+  const p={x:random()*120,y:random()*76},kind=i%2?'tree':'shrub';
+  const a=validatePoint(indexed,p,kind),b=validatePoint(exhaustive,p,kind);
+  assert.equal(a.ok,b.ok);
+  if(a.ok)assert.ok(Math.abs(a.nearest.distance-b.nearest.distance)<1e-9);
+ }
+});
+
+test('prepared CAD carries a clearance margin into browser and CLI without weakening it',()=>{
+ assert.equal(classify('GREENLEAVES_INPUT_EXISTING'),'existing');
+ const m=parseDxf('999\nGREENLEAVES_PREPARATION {"geometryTolerance":0.2}\n'+demoDxf());
+ const c=prepare(m,{geometryTolerance:0});assert.equal(c.geometryTolerance,0.2);
+ assert.equal(validatePoint(c,{x:1.3,y:60},'shrub').ok,false);
+ assert.equal(validatePoint(prepare(model()),{x:1.3,y:60},'shrub').ok,true);
+ assert.throws(()=>parseDxf('999\nGREENLEAVES_PREPARATION {"geometryTolerance":null}\n'+demoDxf()));
+ assert.throws(()=>prepare(model(),{geometryTolerance:NaN}));
 });
