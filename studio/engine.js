@@ -1,5 +1,5 @@
 // Greenleaves geometry engine. Engineering defaults, NOT certified legal rules.
-export const VERSION = '0.2.0';
+export const VERSION = '0.3.0';
 export const RULES = {
   boundary: {label:'Граница проекта', color:'#658572'},
   building: {label:'Здание / сооружение',tree:5,shrub:1.5,color:'#9ba5ab',solid:true},
@@ -22,7 +22,10 @@ const patterns = {
   existing:/дерев|дендро|tree|существ.*озелен|GREENLEAVES_SHRUBS/i,
   obstacle:/знак|указател|щит|огражд|малые архитектур|маф|светофор|опор/i,
 };
-export function classify(layer) { return Object.keys(patterns).find(k=>patterns[k].test(layer)) || 'unknown'; }
+export function classify(layer) {
+  const prepared=/^GREENLEAVES_INPUT_(BUILDING|UTILITY|ROAD|EXISTING|WATER|OBSTACLE|UNKNOWN)$/i.exec(layer);
+  return prepared ? prepared[1].toLowerCase() : Object.keys(patterns).find(k=>patterns[k].test(layer)) || 'unknown';
+}
 export function distance(a,b) {return Math.hypot(a.x-b.x,a.y-b.y);}
 export function distSegment(p,a,b) {
   const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy;
@@ -83,6 +86,10 @@ export function parseDxf(text,name='drawing.dxf') {
     pairs.push([code,lines[i+1].trim()]);
   }
   if(!pairs.some(([c,v])=>c===0 && v==='EOF')) throw Error('Повреждён DXF: отсутствует EOF.');
+  const preparation=pairs.filter(([c,v])=>c===999 && v.startsWith('GREENLEAVES_PREPARATION '));
+  if(preparation.length>1)throw Error('Неоднозначные метаданные подготовки CAD.');
+  const geometryTolerance=preparation.length?JSON.parse(preparation[0][1].slice('GREENLEAVES_PREPARATION '.length)).geometryTolerance:0;
+  if(!Number.isFinite(geometryTolerance)||geometryTolerance<0||geometryTolerance>1)throw Error('Некорректная погрешность подготовки CAD.');
   const unitsIndex=pairs.findIndex(([c,v])=>c===9 && v==='$INSUNITS');
   const units=unitsIndex>=0 && pairs[unitsIndex+1]?.[0]===70 ? Number(pairs[unitsIndex+1][1]):0;
   const unitScale=({4:1000,5:100,6:1})[units] || null;
@@ -149,11 +156,14 @@ export function parseDxf(text,name='drawing.dxf') {
   }
   if(!features.length)throw Error('Поддерживаемая геометрия в модели не найдена.');
   if(features.length>30000)throw Error('В браузерной версии поддерживается до 30 000 объектов.');
-  return {name,text,units,unitScale,features,layers:[...layers].sort(),unsupported,pairs,entityEnd:end};
+  return {name,text,units,unitScale,features,layers:[...layers].sort(),unsupported,pairs,entityEnd:end,geometryTolerance};
 }
 export function prepare(model,options={}) {
   const scale=options.scale ?? model.unitScale;
   if(!Number.isFinite(scale)||scale<=0)throw Error('Укажите единицы измерения: в DXF они не определены.');
+  if(options.geometryTolerance!==undefined && (!Number.isFinite(options.geometryTolerance)||options.geometryTolerance<0))throw Error('Погрешность геометрии должна быть неотрицательным числом.');
+  const geometryTolerance=Math.max(options.geometryTolerance??0,model.geometryTolerance??0);
+  if(!Number.isFinite(geometryTolerance)||geometryTolerance<0||geometryTolerance>1)throw Error('Погрешность геометрии: от 0 до 1 м.');
   const roles=options.roles||{};
   const role=layer=>roles[layer]||classify(layer);
   if(Object.values(roles).some(v=>!RULES[v]))throw Error('Неизвестная категория слоя.');
@@ -166,19 +176,46 @@ export function prepare(model,options={}) {
   if(boundary.points.length>2000)throw Error('Слишком сложная граница: упростите контур до 2000 вершин.');
   if(!boundary.closed || boundary.points.length<3 || boundary.type==='ARC' || area(boundary.points)<1e-6 || !simplePolygon(boundary.points))throw Error('Граница должна быть простым замкнутым полигоном без самопересечений.');
   boundary.category='boundary';
-  return {model,scale,features,boundary,roles,obstacles:features.filter(f=>f!==boundary && !['boundary','ignored'].includes(f.category)),options};
+  const obstacles=features.filter(f=>f!==boundary && !['boundary','ignored'].includes(f.category));
+  const entries=obstacles.map(f=>{
+    const b=f.type==='CIRCLE'?{minX:f.center.x-f.radius,minY:f.center.y-f.radius,maxX:f.center.x+f.radius,maxY:f.center.y+f.radius}:extent([f]);
+    const error=(f.type==='ARC'?f.error:0)+geometryTolerance*scale;
+    return {f,box:{minX:b.minX-error,minY:b.minY-error,maxX:b.maxX+error,maxY:b.maxY+error}};
+  });
+  return {model,scale,features,boundary,roles,obstacles,index:buildIndex(entries),geometryTolerance,options};
 }
+// AABB hierarchy accelerates exact distance checks; it never approximates a collision.
+function buildIndex(entries) {
+  if(!entries.length)return null;
+  const box=entries.reduce((b,e)=>({minX:Math.min(b.minX,e.box.minX),minY:Math.min(b.minY,e.box.minY),maxX:Math.max(b.maxX,e.box.maxX),maxY:Math.max(b.maxY,e.box.maxY)}),{minX:Infinity,minY:Infinity,maxX:-Infinity,maxY:-Infinity});
+  if(entries.length<=8)return {box,entries};
+  const axis=box.maxX-box.minX>box.maxY-box.minY?'X':'Y';
+  entries.sort((a,b)=>(a.box['min'+axis]+a.box['max'+axis])-(b.box['min'+axis]+b.box['max'+axis]));
+  const mid=Math.floor(entries.length/2);
+  return {box,left:buildIndex(entries.slice(0,mid)),right:buildIndex(entries.slice(mid))};
+}
+function boxDistance(p,b){return Math.hypot(Math.max(b.minX-p.x,0,p.x-b.maxX),Math.max(b.minY-p.y,0,p.y-b.maxY));}
 export function validatePoint(ctx,p,kind,placed=[],ignoreId=null) {
   if(!RADIUS[kind] || !Number.isFinite(p.x)||!Number.isFinite(p.y))return {ok:false,reason:'Некорректные координаты или тип посадки'};
   if(!pointInPolygon(p,ctx.boundary.points))return {ok:false,reason:'За границей проекта'};
-  const edge=featureDistance(p,ctx.boundary)/ctx.scale;
+  const edge=Math.max(0,featureDistance(p,ctx.boundary)/ctx.scale-ctx.geometryTolerance);
   if(edge+1e-7<RADIUS[kind])return {ok:false,reason:`До границы ${edge.toFixed(2)} м, нужно ${RADIUS[kind]} м`};
   let nearest=null;
-  for(const f of ctx.obstacles) {
-    const rule=RULES[f.category],d=Math.max(0,featureDistance(p,f,rule.solid)-(f.type==='ARC'?f.error:0))/ctx.scale;
+  const stack=ctx.index?[ctx.index]:[];
+  const maxRequired=Math.max(...Object.values(RULES).map(r=>r[kind]||0));
+  while(stack.length) {
+    const node=stack.pop(),lower=boxDistance(p,node.box)/ctx.scale;
+    if(lower>=maxRequired && nearest && lower>=nearest.distance)continue;
+    if(!node.entries){
+      const [first,second]=boxDistance(p,node.left.box)<boxDistance(p,node.right.box)?[node.left,node.right]:[node.right,node.left];
+      stack.push(second,first);continue;
+    }
+    for(const {f} of node.entries){
+    const rule=RULES[f.category],d=Math.max(0,(featureDistance(p,f,rule.solid)-(f.type==='ARC'?f.error:0))/ctx.scale-ctx.geometryTolerance);
     const required=rule[kind];
     if(d+1e-7<required)return {ok:false,reason:`${rule.label}: ${d.toFixed(2)} м < ${required} м`,layer:f.layer};
     if(!nearest||d<nearest.distance)nearest={layer:f.layer,category:f.category,distance:d,required};
+    }
   }
   for(const q of placed)if(q.id!==ignoreId && distance(p,q)/ctx.scale+1e-7<RADIUS[kind]+RADIUS[q.kind])return {ok:false,reason:`Пересечение зоны кроны с ${q.id}`};
   return {ok:true,nearest,edge};
@@ -188,7 +225,7 @@ export function generate(ctx,{step=4,max=180,variant='balanced',treeSpecies='Д�
   if(!['balanced','shade','light'].includes(variant))throw Error('Неизвестный сценарий.');
   const box=extent([ctx.boundary]),stride=step*ctx.scale;
   const count=Math.ceil((box.maxX-box.minX)/stride)*Math.ceil((box.maxY-box.minY)/stride);
-  if(count>30000 || count*Math.max(1,ctx.obstacles.reduce((n,f)=>n+f.points.length,0))>30000000)throw Error('Слишком плотный расчёт: увеличьте шаг сетки или сократите участок.');
+  if(count>30000 || ctx.obstacles.reduce((n,f)=>n+f.points.length,0)>1000000)throw Error('Слишком плотный расчёт: увеличьте шаг сетки или сократите участок.');
   const accepted=[],rejected=[],candidates=[],used=new Set(),visited=new Set();let capped=false;
   for(let y=box.minY+stride/2,row=0;y<box.maxY;y+=stride,row++)for(let x=box.minX+stride/2,col=0;x<box.maxX;x+=stride,col++) {
     if(pointInPolygon({x,y},ctx.boundary.points))candidates.push({x,y,tree:variant==='shade'||(variant==='balanced'&&(row+col)%3===0)});
@@ -209,7 +246,7 @@ export function makeReport(ctx,result,history=[]) {
   return {schema_version:1,engine:VERSION,generated_at:new Date().toISOString(),status:'engineering_preview',
     source_file:ctx.model.name,units_per_meter:ctx.scale,boundary_layer:ctx.boundary.layer,
     layer_roles:Object.fromEntries(ctx.model.layers.map(l=>[l,ctx.roles[l]||classify(l)])),
-    settings:{step_m:result.step,max:result.max,variant:result.variant},
+    settings:{step_m:result.step,max:result.max,variant:result.variant,geometry_tolerance_m:ctx.geometryTolerance},
     summary:{accepted:result.accepted.length,trees:result.accepted.filter(p=>p.kind==='tree').length,shrubs:result.accepted.filter(p=>p.kind==='shrub').length,rejected:result.rejected.length,candidates_examined:result.examined,capped:result.capped},
     rules:structuredClone(RULES),placements:result.accepted,rejected:result.rejected,edits:history,
     limitations:['Инженерный эскиз. Численные отступы — настраиваемые проектные допущения, нормативная верификация не завершена.','Полнота коммуникаций и назначение слоёв требуют подтверждения инженером.','Климат, почва, инсоляция и полив не моделируются. Выбор породы требует дендрологической проверки.','Дубай: локальные правила и ассортимент не подключены.'],

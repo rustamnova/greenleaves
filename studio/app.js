@@ -35,7 +35,7 @@ function setModel(text,name){
   check('units',false,'Не определены');check('file',false,'Ожидается DXF');
   try {
     const model=parseDxf(text,name);state.model=model;state.zoom=1;
-    $('filename').textContent=`${name} · ${model.features.length} объектов`;$('project-title').textContent=name;
+    $('filename').textContent=`${name} · ${model.features.length} объектов${model.geometryTolerance?` · запас подготовки ${fmt(model.geometryTolerance)} м`:''}`;$('project-title').textContent=name;
     $('boundary').innerHTML='<option value="">Определить по названию слоя</option>'+model.layers.map(l=>`<option>${esc(l)}</option>`).join('');
     $('units').value='auto';$('layer-count').textContent=model.layers.length;
     $('layers').replaceChildren();
