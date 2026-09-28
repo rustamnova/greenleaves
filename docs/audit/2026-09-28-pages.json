@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-09-28T14:42:21.579Z",
+  "baseUrl": "https://rustamnova.github.io/greenleaves/",
+  "anonymous": true,
+  "allAccessible": true,
+  "allMatched": true,
+  "nonHtmlAssetsMatched": true,
+  "files": [
+    {
+      "path": "data/species-catalog.json",
+      "url": "https://rustamnova.github.io/greenleaves/data/species-catalog.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 355585,
+      "sha256": "a79d3706361c65edfc2788bc1c648b8e664e498bf02af413a9de90d3683142bd",
+      "expectedSha256": "a79d3706361c65edfc2788bc1c648b8e664e498bf02af413a9de90d3683142bd",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "docs.html",
+      "url": "https://rustamnova.github.io/greenleaves/docs.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9151,
+      "sha256": "d06f81ddf8e350aa2d02f4ab701614748c46fca045696834048c9d87120f53f1",
+      "expectedSha256": "d06f81ddf8e350aa2d02f4ab701614748c46fca045696834048c9d87120f53f1",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "url": "https://rustamnova.github.io/greenleaves/icon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 251,
+      "sha256": "4835bcf283e14ef675f4cbc6376cb4eea94a26c889143e807938ff9954c0ec15",
+      "expectedSha256": "4835bcf283e14ef675f4cbc6376cb4eea94a26c889143e807938ff9954c0ec15",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "url": "https://rustamnova.github.io/greenleaves/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7760,
+      "sha256": "55b8f62e6e54e8edaf763e375d7c16ccbec62b47bcefaeed5149ef0566ad0704",
+      "expectedSha256": "55b8f62e6e54e8edaf763e375d7c16ccbec62b47bcefaeed5149ef0566ad0704",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "landing.js",
+      "url": "https://rustamnova.github.io/greenleaves/landing.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 1672,
+      "sha256": "49cad4ddab1414a93aa98a0c5d3b5309e215f5c32fa6fabc5f5539499e0065bb",
+      "expectedSha256": "49cad4ddab1414a93aa98a0c5d3b5309e215f5c32fa6fabc5f5539499e0065bb",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "materials/greenleaves-lct2026.pptx",
+      "url": "https://rustamnova.github.io/greenleaves/materials/greenleaves-lct2026.pptx",
+      "status": 200,
+      "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "bytes": 12104956,
+      "sha256": "3df55fbe9bf045814982cf8b81cbdb0b7a9ea41927d3a70170d7c00294afda10",
+      "expectedSha256": "3df55fbe9bf045814982cf8b81cbdb0b7a9ea41927d3a70170d7c00294afda10",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "report.html",
+      "url": "https://rustamnova.github.io/greenleaves/report.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6511,
+      "sha256": "aaa4f88842f8e77fa880c263d1749c094b4b7524d173fc26251ed1c8fff184be",
+      "expectedSha256": "aaa4f88842f8e77fa880c263d1749c094b4b7524d173fc26251ed1c8fff184be",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "studio/app.js",
+      "url": "https://rustamnova.github.io/greenleaves/studio/app.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 17776,
+      "sha256": "0e8787f10f14a2b4532ab7dcb07916dc1926ac8ec1e4d08b35b6ed52d1a97ff6",
+      "expectedSha256": "0e8787f10f14a2b4532ab7dcb07916dc1926ac8ec1e4d08b35b6ed52d1a97ff6",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "studio/engine.js",
+      "url": "https://rustamnova.github.io/greenleaves/studio/engine.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 23023,
+      "sha256": "db259392426b2c1bc2f9f00de083602b1edeee772a3d8a6f95bd2c94457d63a6",
+      "expectedSha256": "db259392426b2c1bc2f9f00de083602b1edeee772a3d8a6f95bd2c94457d63a6",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "studio/index.html",
+      "url": "https://rustamnova.github.io/greenleaves/studio/index.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10609,
+      "sha256": "75c29514d7377020bf60dec9473a0e84c3179644858922b89cd4f569ab647b17",
+      "expectedSha256": "75c29514d7377020bf60dec9473a0e84c3179644858922b89cd4f569ab647b17",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "studio/studio.css",
+      "url": "https://rustamnova.github.io/greenleaves/studio/studio.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 10844,
+      "sha256": "13fbf7969e06010cf1ee5830ac568bd597fb635906205339cd4b1d57fbbb0ac4",
+      "expectedSha256": "13fbf7969e06010cf1ee5830ac568bd597fb635906205339cd4b1d57fbbb0ac4",
+      "attempts": 1,
+      "matches": true
+    },
+    {
+      "path": "style.css",
+      "url": "https://rustamnova.github.io/greenleaves/style.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 9125,
+      "sha256": "27353ad98e2cdf3a8fa6a33380cea4c22fff09b9aa2fa1d37f44865c65054ef4",
+      "expectedSha256": "27353ad98e2cdf3a8fa6a33380cea4c22fff09b9aa2fa1d37f44865c65054ef4",
+      "attempts": 1,
+      "matches": true
+    }
+  ]
+}
