@@ -37,16 +37,16 @@
 | Docker обязателен | Dockerfile подготовлен, сборка не проверена |
 | МосТех.ОС/совместимый Linux | Не проверено |
 | OpenAPI при HTTP API | Не применяется: HTTP API нет |
-| Презентация / PDF документации | 13 слайдов подготовлены для обсуждения; данные команды и PDF документации ещё нужны |
+| Презентация / PDF документации | 13 слайдов, PDF-копия презентации и PDF документации подготовлены; полные данные команды ещё нужны |
 | Пилотный датасет | 28.09: каталог 20 улиц прочитан; комплект 3-й Парковой извлечён. Подготовщик v0.3 распознал 22 307 фрагментов; 2 490 пустых REGION блокируют расчёт. Нужен экспорт с полной геометрией. [Аудит](audit/2026-09-28-dataset-probe.md) |
 
 ## Ссылки для кабинета
 
 - Репозиторий: https://github.com/rustamnova/greenleaves
-- Документация: https://github.com/rustamnova/greenleaves/blob/main/docs/ARCHITECTURE.md (к сдаче также нужен PDF).
+- Документация: https://github.com/rustamnova/greenleaves/blob/main/docs/ARCHITECTURE.md ; [PDF подготовлен](https://rustamnova.github.io/greenleaves/materials/greenleaves-documentation.pdf).
 - Прототип: https://rustamnova.github.io/greenleaves/studio/
 - Презентация: https://rustamnova.github.io/greenleaves/materials/greenleaves-lct2026.pptx — версия для обсуждения, сведения команды нужно дополнить.
-- Дополнительные материалы: реальный пример вход/выход и видеодемо ещё нужны.
+- Дополнительные материалы: [синтетический вход/выход и JSON](https://rustamnova.github.io/greenleaves/submission.html), [сценарий живого демо](DEMO_SCRIPT.md). Реальный сквозной пример ещё не получен; отдельный видеофайл в ТЗ не указан как обязательный.
 
 Форма кабинета в этом сеансе не заполнялась и не отправлялась. Статус команды и капитанские полномочия не проверены.
 

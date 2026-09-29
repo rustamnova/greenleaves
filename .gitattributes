@@ -1,0 +1,5 @@
+# Preserve exported documents and CAD examples byte-for-byte on Windows.
+*.pdf binary
+*.pptx binary
+*.dxf -text
+site/materials/** -text whitespace=cr-at-eol
