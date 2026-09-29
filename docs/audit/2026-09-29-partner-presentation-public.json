@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-09-29T20:56:44.027210+00:00",
+  "authentication": "None: no Cookie or Authorization",
+  "results": [
+    {
+      "url": "https://rustamnova.github.io/greenleaves/materials/greenleaves-lct2026.pptx",
+      "status": 200,
+      "bytes": 12257701,
+      "verified": true,
+      "sha256": "f27ca990dc1aad3315888cd834042253b459fa85b6a3d65abc079b6b9bbfdf24"
+    },
+    {
+      "url": "https://rustamnova.github.io/greenleaves/materials/greenleaves-presentation.pdf",
+      "status": 200,
+      "bytes": 4123894,
+      "verified": true,
+      "sha256": "03c3cbbe903ee504dfed1658cb1d8ece4eec728475a14d7b7245e324471945de"
+    },
+    {
+      "url": "https://rustamnova.github.io/greenleaves/materials/manifest.json",
+      "status": 200,
+      "bytes": 1387,
+      "verified": true,
+      "sha256": "0a294b060a9780e93919702507bbabe88d4c55bbe147740ae75abcb3d71c47f3"
+    },
+    {
+      "url": "https://rustamnova.github.io/greenleaves/submission.html",
+      "status": 200,
+      "bytes": 6076,
+      "verified": true,
+      "sha256": "ef4ef706adfcf04eda81f3528928314a0f34d35922334156cb5df177d09f834d"
+    },
+    {
+      "url": "https://greenleaves-lct2026.netlify.app/materials/greenleaves-lct2026.pptx",
+      "status": 200,
+      "bytes": 12257701,
+      "verified": true,
+      "sha256": "f27ca990dc1aad3315888cd834042253b459fa85b6a3d65abc079b6b9bbfdf24"
+    },
+    {
+      "url": "https://greenleaves-lct2026.netlify.app/materials/greenleaves-presentation.pdf",
+      "status": 200,
+      "bytes": 4123894,
+      "verified": true,
+      "sha256": "03c3cbbe903ee504dfed1658cb1d8ece4eec728475a14d7b7245e324471945de"
+    },
+    {
+      "url": "https://greenleaves-lct2026.netlify.app/materials/manifest.json",
+      "status": 200,
+      "bytes": 1387,
+      "verified": true,
+      "sha256": "0a294b060a9780e93919702507bbabe88d4c55bbe147740ae75abcb3d71c47f3"
+    },
+    {
+      "url": "https://greenleaves-lct2026.netlify.app/submission.html",
+      "status": 200,
+      "bytes": 6063,
+      "verified": true,
+      "sha256": "2970c76c768ab68b92522dabb39a84b6166798e3a5e8ec00924aafe09c79a74b"
+    }
+  ]
+}
