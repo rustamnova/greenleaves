@@ -18,7 +18,8 @@ for(const tracked of files){
   if(relative.includes('..')||path.isAbsolute(relative))throw Error('Unsafe asset path.');
   const input=path.join(root,tracked);
   if(!(await fs.lstat(input)).isFile())throw Error('Only ordinary files may be exported.');
-  const bytes=await fs.readFile(input);
+  // Export the committed bytes, independent of Windows checkout EOL settings.
+  const bytes=execFileSync('git',['show',`HEAD:${tracked}`],{cwd:root,maxBuffer:64*1024*1024});
   for(const provider of ['netlify','sourcecraft','gitverse']){
     const destination=path.join(output,provider,relative);
     await fs.mkdir(path.dirname(destination),{recursive:true});

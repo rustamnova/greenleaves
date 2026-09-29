@@ -23,7 +23,8 @@ async function fetchPublic(url){
 const results=[];
 for(const file of files){
   const relative=file.slice(5),url=new URL(relative==='index.html'?'./':relative,base);
-  const expected=await fs.readFile(path.join(root,file));
+  // Releases contain Git blobs. A Windows working copy can have different EOLs.
+  const expected=execFileSync('git',['show',`HEAD:${file}`],{cwd:root,maxBuffer:64*1024*1024});
   try {
     const {response,actual,attempts}=await fetchPublic(url);
     results.push({path:relative,url:String(url),status:response.status,contentType:response.headers.get('content-type'),bytes:actual.length,sha256:sha(actual),expectedSha256:sha(expected),attempts,matches:response.ok&&sha(expected)===sha(actual)});
