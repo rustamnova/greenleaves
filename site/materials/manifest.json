@@ -1,6 +1,6 @@
 {
   "version": "0.3.0",
-  "preparedAt": "2026-09-29T14:11:46.865155+00:00",
+  "preparedAt": "2026-09-29T20:53:26.086945+00:00",
   "scope": "Public engineering prototype and synthetic examples; no real CAD",
   "files": [
     {
@@ -30,13 +30,13 @@
     },
     {
       "path": "materials/greenleaves-lct2026.pptx",
-      "bytes": 12105306,
-      "sha256": "8dc6697ac6c298568e3e03b10fcf406d6ecae279f20622e1ea2070ff53f11d87"
+      "bytes": 12257701,
+      "sha256": "f27ca990dc1aad3315888cd834042253b459fa85b6a3d65abc079b6b9bbfdf24"
     },
     {
       "path": "materials/greenleaves-presentation.pdf",
-      "bytes": 4725930,
-      "sha256": "14032f0f01d41e9275881a7be641bc7b8ae69bb38e3899ca17d188a61a818c7a"
+      "bytes": 4123894,
+      "sha256": "03c3cbbe903ee504dfed1658cb1d8ece4eec728475a14d7b7245e324471945de"
     }
   ]
 }
