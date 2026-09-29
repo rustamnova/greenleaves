@@ -1,0 +1,42 @@
+{
+  "version": "0.3.0",
+  "preparedAt": "2026-09-29T14:11:46.865155+00:00",
+  "scope": "Public engineering prototype and synthetic examples; no real CAD",
+  "files": [
+    {
+      "path": "materials/demo/input.dxf",
+      "bytes": 767,
+      "sha256": "4a6a43da0b6d713e092567ba39a03aea4b77714fe5123ce4beaacaca79b435f8"
+    },
+    {
+      "path": "materials/demo/planting-plan.dxf",
+      "bytes": 44649,
+      "sha256": "2e93eaf299efa050fd0dc6a67233086f6d4f5c89d8f1d24ad7204b4db9d62c4d"
+    },
+    {
+      "path": "materials/demo/README.md",
+      "bytes": 1872,
+      "sha256": "7f544f9a2fc606c93a81567a84347ca03be76efdb613d7dc3f2538838f871b74"
+    },
+    {
+      "path": "materials/demo/report.json",
+      "bytes": 87902,
+      "sha256": "63f390ea314566be4309c3873f6d5095ed7a04a3a2916b7831ca6fe342fe781f"
+    },
+    {
+      "path": "materials/greenleaves-documentation.pdf",
+      "bytes": 132273,
+      "sha256": "e40043287b1f73542453d48405ce6afdabc4a7335ba51bb17139db3057a20fc1"
+    },
+    {
+      "path": "materials/greenleaves-lct2026.pptx",
+      "bytes": 12105306,
+      "sha256": "8dc6697ac6c298568e3e03b10fcf406d6ecae279f20622e1ea2070ff53f11d87"
+    },
+    {
+      "path": "materials/greenleaves-presentation.pdf",
+      "bytes": 4725930,
+      "sha256": "14032f0f01d41e9275881a7be641bc7b8ae69bb38e3899ca17d188a61a818c7a"
+    }
+  ]
+}
