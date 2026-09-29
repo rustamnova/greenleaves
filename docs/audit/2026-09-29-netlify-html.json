@@ -1,0 +1,137 @@
+{
+  "checkedAt": "2026-09-29T14:23:45.764860+00:00",
+  "anonymous": true,
+  "method": "Anonymous HTTP; expected titles/text and resolved anchor URLs; Netlify pretty URL aliases verified by byte-identical HTTP response bodies. No browser UI verification.",
+  "allContentPreserved": true,
+  "files": [
+    {
+      "path": "docs.html",
+      "titleMatches": true,
+      "missingText": [],
+      "missingLinks": [],
+      "verifiedAliases": [
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/report.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/report"
+        }
+      ]
+    },
+    {
+      "path": "index.html",
+      "titleMatches": true,
+      "missingText": [],
+      "missingLinks": [],
+      "verifiedAliases": [
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/docs.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/docs"
+        },
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/submission.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/submission"
+        }
+      ]
+    },
+    {
+      "path": "report.html",
+      "titleMatches": true,
+      "missingText": [],
+      "missingLinks": [],
+      "verifiedAliases": [
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/docs.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/docs"
+        },
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/submission.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/submission"
+        }
+      ]
+    },
+    {
+      "path": "studio/index.html",
+      "titleMatches": true,
+      "missingText": [],
+      "missingLinks": [],
+      "verifiedAliases": [
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/docs.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/docs"
+        }
+      ]
+    },
+    {
+      "path": "submission.html",
+      "titleMatches": true,
+      "missingText": [],
+      "missingLinks": [],
+      "verifiedAliases": [
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/docs.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/docs"
+        },
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/report.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/report"
+        },
+        {
+          "source": "https://greenleaves-lct2026.netlify.app/submission.html",
+          "alias": "https://greenleaves-lct2026.netlify.app/submission"
+        }
+      ]
+    }
+  ],
+  "aliases": [
+    {
+      "source": "https://greenleaves-lct2026.netlify.app/docs.html",
+      "alias": "https://greenleaves-lct2026.netlify.app/docs",
+      "sameContent": true,
+      "responses": [
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/docs.html",
+          "status": 200,
+          "sha256": "13d0ef0519a401440ced680627b510b19c171f40dcdcd47f709269df1a97758b"
+        },
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/docs",
+          "status": 200,
+          "sha256": "13d0ef0519a401440ced680627b510b19c171f40dcdcd47f709269df1a97758b"
+        }
+      ]
+    },
+    {
+      "source": "https://greenleaves-lct2026.netlify.app/report.html",
+      "alias": "https://greenleaves-lct2026.netlify.app/report",
+      "sameContent": true,
+      "responses": [
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/report.html",
+          "status": 200,
+          "sha256": "524136f4990fddde604b76d6353cde56044e7d5d8c10b3596110cce4bdd0cdf3"
+        },
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/report",
+          "status": 200,
+          "sha256": "524136f4990fddde604b76d6353cde56044e7d5d8c10b3596110cce4bdd0cdf3"
+        }
+      ]
+    },
+    {
+      "source": "https://greenleaves-lct2026.netlify.app/submission.html",
+      "alias": "https://greenleaves-lct2026.netlify.app/submission",
+      "sameContent": true,
+      "responses": [
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/submission.html",
+          "status": 200,
+          "sha256": "3de913cebac15f5a959ec37eb012dd479972051efd07a151c31d6cabe3b8dd3a"
+        },
+        {
+          "url": "https://greenleaves-lct2026.netlify.app/submission",
+          "status": 200,
+          "sha256": "3de913cebac15f5a959ec37eb012dd479972051efd07a151c31d6cabe3b8dd3a"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-09-29T14:21:14.661208+00:00",
+  "anonymous": true,
+  "allAccessible": true,
+  "files": [
+    {
+      "url": "https://github.com/rustamnova/greenleaves",
+      "status": 200,
+      "finalUrl": "https://github.com/rustamnova/greenleaves",
+      "bytes": 309308,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/rustamnova/greenleaves/blob/main/docs/SUBMISSION.md",
+      "status": 200,
+      "finalUrl": "https://github.com/rustamnova/greenleaves/blob/main/docs/SUBMISSION.md",
+      "bytes": 266833,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/rustamnova/greenleaves/blob/main/docs/DEMO_SCRIPT.md",
+      "status": 200,
+      "finalUrl": "https://github.com/rustamnova/greenleaves/blob/main/docs/DEMO_SCRIPT.md",
+      "bytes": 246063,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/rustamnova/greenleaves/blob/main/docs/PARTNER_HANDOFF.md",
+      "status": 200,
+      "finalUrl": "https://github.com/rustamnova/greenleaves/blob/main/docs/PARTNER_HANDOFF.md",
+      "bytes": 280347,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/rustamnova/greenleaves/blob/main/docs/ARCHITECTURE.md",
+      "status": 200,
+      "finalUrl": "https://github.com/rustamnova/greenleaves/blob/main/docs/ARCHITECTURE.md",
+      "bytes": 282161,
+      "anonymous": true
+    },
+    {
+      "url": "https://api.github.com/repos/rustamnova/greenleaves",
+      "status": 200,
+      "finalUrl": "https://api.github.com/repos/rustamnova/greenleaves",
+      "bytes": 5432,
+      "anonymous": true,
+      "private": false,
+      "visibility": "public"
+    }
+  ]
+}
